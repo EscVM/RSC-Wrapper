@@ -1,2 +1,13 @@
 # RSC-Wrapper
-TF2.x model wrapper to train a network RSC regularizer.
+
+RSC Regularizer Wrapper for TF Model.
+
+# Test PACS
+
+-----No Augmentation-----
+
+Sketch > 60
+
+-----Augu
+
+Sketch > 61
