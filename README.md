@@ -19,9 +19,6 @@ In contrast to the authors and their [official repository](https://github.com/De
 # 1.0 Getting Started
 
 ## 1.1 Installation
-# 1.0 Getting Started
-
-## 1.1 Installation
 Python3 and Tensorflow 2.x are required and should be installed on the host machine following the [official guide](https://www.tensorflow.org/install). 
 
 1. Clone this repository
