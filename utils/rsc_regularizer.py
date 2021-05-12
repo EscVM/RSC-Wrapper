@@ -51,7 +51,7 @@ class RSCModelWrapper():
         Print summary of the model
     save_weigths(bin_dir_custom=None):
         Save model weights
-    compile(config, loss, metric, optimizer, pre_process_fc = None,
+    compile(loss, metric, optimizer, pre_process_fc=None, name_model='model',
         checkpoint_dir='checkpoint', log_dir='logs', bin_dir='bin', do_not_restore=False, save_old=False, max_bck=3)
         Compile model with given loss, metrics and optimizer. Moreover it takes care of restoring a prerviously trained model.
     restore():
@@ -201,7 +201,7 @@ class RSCModelWrapper():
             else:
                 self.model.save_weights(self.bin_dir)
 
-    def compile(self, config, loss, metric, optimizer, pre_process_fc = None,
+    def compile(self, loss, metric, optimizer, pre_process_fc=None, name_model='model', 
         checkpoint_dir='checkpoint', log_dir='logs', bin_dir='bin', do_not_restore=False, save_old=False, max_bck=3):
         """
         Compile the model with given configurations, loss, metrics and optimizer. Moreover it takes as input a custom pre-processing function
@@ -209,8 +209,6 @@ class RSCModelWrapper():
                         
         Parameters
         ----------
-        config: dict
-            configuration dictionary
         loss: obj
             loss object
         metric: obj
@@ -219,6 +217,8 @@ class RSCModelWrapper():
             optimizer object
         pre_process_fc: func
             function with tf.data pre-processing custom pipeline
+        name_model: str
+            name of the model
         checkpoint_dir: str
             checkpoint path
         log_dir: str
@@ -233,8 +233,7 @@ class RSCModelWrapper():
             max old folder with same name to keep
         """
         self.compiled = True
-        self.name_model = config['name']
-        self.n_rsc_samples = int(config['batch_size'] * self.batch_percentage * 0.01)
+        self.name_model = name_model
         self.loss = loss
         self.metric = metric
         self.log_dir = os.path.join(log_dir, self.name_model)
@@ -334,6 +333,8 @@ class RSCModelWrapper():
         track: str
             trach 'accuracy' or 'loss'
         """
+        
+        self.n_rsc_samples = int(batch_size * self.batch_percentage * 0.01)
 
         track = track.lower()
         if track not in ["accuracy","loss"]:
