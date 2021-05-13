@@ -1,7 +1,8 @@
 matplotlib >= 3.3.4
 numpy >= 1.19.5
-tensorflow >= 2.4.1
-tqdm >= 4.60.0
-tensorflow-datasets >= 4.2.0
 opencv-python >= 4.5.1.48
 scipy >= 1.5.4
+tensorflow >= 2.4.1
+tensorflow-datasets >= 4.2.0
+tensorflow-probability >= 0.12.2
+tqdm >= 4.60.0
